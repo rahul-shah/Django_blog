@@ -12,6 +12,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
+	  command: pip install django-tinymce4-lite
           command: ./manage.py test --settings=mysite.settings.dev
           name: Test
 
