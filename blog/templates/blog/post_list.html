@@ -10,7 +10,9 @@
             {% if post.image and post.image.url %}
                 <p><img src="{{post.image.url}}" width="500" height="600"></p>
             {% endif %}
-            <p>{{ post.text|linebreaksbr }}</p>
+            {% autoescape on %}
+                <p>{{ post.text|safe }}</p>
+            {% endautoescape %}
         </div>
     {% endfor %}
 {% endblock %}
