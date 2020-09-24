@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'tinymce',
     'rest_framework',
+    'frontend', # enable the frontend app
 ]
 
 MIDDLEWARE = [
