@@ -31,18 +31,32 @@ class App extends Component {
       });
   }
 
+
   render() {
-    return (
-      <ul>
-        {this.state.data.map(post => {
-          return (
-            <li key={post.id}>
-              {post.title} - {post.text}
-            </li>
-          );
-        })}
-      </ul>
-    );
+    const final = [];
+    for (let  post of this.state.data) 
+    {
+      if(post.image) {
+        final.push(<img style={{maxWidth: 500, borderRadius: 8, alignSelf: 'center'}} src={post.image}></img>)
+      }
+      final.push(<li key={post.title}>{post.text}</li>);  
+    }
+
+      return (
+        <div className="App">
+          <ul>{final}</ul>    </div>
+      );
+    // return (
+    //   <ul>
+    //     {this.state.data.map(post => {
+    //       return (
+    //         <li key={post.id}>
+    //           {post.title} - {post.text}
+    //         </li>
+    //       );
+    //     })}
+    //   </ul>
+    // );
   }
 }
 
