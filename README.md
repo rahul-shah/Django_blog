@@ -11,5 +11,8 @@ Tech Stack:
 3. Postgres DB for prod builds
 4. Bootstrap
 5. Temporarily deployed to Python Anywhere. Soon to be moved to AWS
+6. ReactJS for frontend
+7. Babel
+8. Webpack
 
 CI builds on CircleCI on the link above
