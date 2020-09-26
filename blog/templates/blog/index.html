@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% include 'blog/page_header.html' with header_img_url='/static/img/home-bg.jpg' header_title='Clean Blog' header_subtitle='A Blog Theme by Start Bootstrap' %}
+{% include 'blog/page_header.html' with header_img_url='/static/img/home-bg.jpg' header_title='Cluelessly Parenting' header_subtitle='Winging Parenting' %}
 
 <!-- Main Content -->
 {% for post in posts %}
@@ -10,25 +10,27 @@
       <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
               <div class="post-preview">
-                  <a href="post.html">
+                <a href="{% url 'post_detail' pk=post.pk %}">
                       <h2 class="post-title">
                         {{ post.title }}
                       </h2>
                       <h3 class="post-subtitle">
-                        {{ post.text }}
+                        {% autoescape on %}
+                            <p>{{ post.text|safe }}</p>
+                        {% endautoescape %}
                       </h3>
                   </a>
                   <p class="post-meta">Posted by
-                      <a href="#">Start Bootstrap</a>
-                      on September 24, 2019</p>
+                      <a href="#">{{ post.author }}</a>
+                      on {{ post.published_date }}</p>
               </div>
               <hr>
-              <!-- Pager -->
-              <div class="clearfix">
-                  <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-              </div>
           </div>
       </div>
   </div>
 {% endfor %}
+<!-- Pager -->
+<div class="clearfix">
+  <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+</div>
 {% endblock %}
