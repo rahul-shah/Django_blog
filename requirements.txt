@@ -5,6 +5,7 @@ Django==2.2.16
 django-editorjs-field==0.0.3
 django-quill-editor==0.1.16
 django-quilljs==0.0.2
+django-recaptcha==2.0.6
 django-split-settings==1.0.1
 django-tinymce4-lite==1.8.0
 djangorestframework==3.11.1
