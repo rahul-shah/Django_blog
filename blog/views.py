@@ -2,10 +2,12 @@ from django.shortcuts import render
 from .models import Post
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
+from .forms import PostForm , ContactForm
 from django.shortcuts import redirect
 from .serializers import PostSerializer
 from rest_framework import generics
+from django.urls import reverse_lazy
+from django.views.generic.edit import FormView
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -47,8 +49,12 @@ def post_edit(request, pk):
 #     queryset = Post.objects.all()
 #     serializer_class = PostSerializer
 
-from django.views.generic import TemplateView
+class ContactFormView(FormView):
+    template_name = 'blog/contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contact_success_url')
 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
-class HomeView(TemplateView):
-    template_name = 'blog/home.html'

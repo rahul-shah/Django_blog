@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tinymce',
     'rest_framework',
     'frontend', # enable the frontend app
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +96,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+RECAPTCHA_PUBLIC_KEY = '6LdEGdEZAAAAAFC2nQf2RePrT66EfciDyDV1JJs5'
+RECAPTCHA_PRIVATE_KEY = '6LdEGdEZAAAAADISgQS_bBhwhxkwEaLJ0dC7YJRg'
+RECAPTCHA_REQUIRED_SCORE = 0.65
 
 
 # Internationalization

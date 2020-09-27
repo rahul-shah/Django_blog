@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm, TextInput, Textarea, EmailInput
 from .models import Post,ContactModel
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 
 class PostForm(forms.ModelForm):
 
@@ -10,6 +12,8 @@ class PostForm(forms.ModelForm):
 
 
 class ContactForm(ModelForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    
     class Meta:
         model = ContactModel
         exclude = ['time']
